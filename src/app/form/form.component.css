@@ -1,0 +1,15 @@
+input.ng-invalid.ng-touched{
+    background: #faa;
+}
+
+.error{
+    border: 1px solid red;
+    color: red;
+}
+
+.error p{
+    font-size: 20px;
+}
+.form-group{
+    padding: 20px;
+}

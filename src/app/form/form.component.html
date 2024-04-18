@@ -1,0 +1,53 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <fieldset [formGroupName]="'user'">
+            <div class="form-group">
+                <label>Family</label>
+                <input type="text"
+                class="form-control"
+                [formControlName]="'family'">
+            </div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control"
+                [formControlName]="'name'">
+                <p *ngIf="form.get('name')?.invalid && form.get('name')?.touched" >Не коректный Name</p>
+            </div>
+            <div class="form-group">
+                <label>Group Name:</label>
+                <input type="text"
+                class="form-control"
+                [formControlName]="'groupName'">
+                <p *ngIf="form.get('groupName')?.invalid && form.get('groupName')?.touched" >Не коректный name group</p>
+            </div>
+            <div class="form-group" >
+                <div class="radio" *ngFor="let ans of subjects" [formControlName]="'selectedItem'">
+                    <input type="radio" [value]="ans.type" [formControlName]="'selectedItem'"> {{ans.text}}
+                </div>
+            </div>
+            <div class="form-group" >
+                <label >Select Gender</label>
+                <select class="form-control" [formControlName]="'gender'">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="Im_croissant">I`m croissant</option>
+                </select>
+              </div>
+              <div class="form-check form-group">
+                <input class="form-check-input" type="checkbox" [formControlName]="'checkBox'">
+                <label class="form-check-label">CheckBox</label>
+              </div>
+              <hr>
+              <button class="btn btn-success" type="submit" [disabled]="form.invalid">Send</button>
+    </fieldset>
+    <br>
+    <p>Family:{{this.form.value.user.family}}</p>
+    <p>Name:{{this.form.value.user.name}}</p>
+    <p>GroupName:{{this.form.value.user.groupName}}</p>
+    <p>SelectedItem:{{this.form.value.user.selectedItem}}</p>
+    <p>Gender:{{this.form.value.user.gender}}</p>
+    <p>CheckBox:{{this.form.value.user.checkBox}}</p>
+
+    </form>
+    
+  </div>
